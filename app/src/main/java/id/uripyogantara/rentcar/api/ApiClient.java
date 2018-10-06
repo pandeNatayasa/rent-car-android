@@ -13,8 +13,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
+    private Context context;
 
-    public ApiService getService(Context context){
+    public ApiClient(Context context) {
+        this.context = context;
+    }
+
+    public ApiService getService(){
         final PreferencesHelper preferencesHelper = new PreferencesHelper(context);
 
         OkHttpClient client=new OkHttpClient.Builder()
@@ -41,7 +46,7 @@ public class ApiClient {
             }).build();
 
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://localhost:8000")
+                .baseUrl("http://10.10.9.55:8000/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

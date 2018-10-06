@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".user.UserActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".login.LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
