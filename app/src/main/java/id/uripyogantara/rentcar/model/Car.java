@@ -1,8 +1,11 @@
 package id.uripyogantara.rentcar.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Car{
+public class Car implements Parcelable {
 
 	@SerializedName("store_id")
 	private int storeId;
@@ -30,6 +33,29 @@ public class Car{
 
 	@SerializedName("picture")
 	private String picture;
+
+	protected Car(Parcel in) {
+		storeId = in.readInt();
+		updatedAt = in.readString();
+		name = in.readString();
+		rentalPrice = in.readInt();
+		description = in.readString();
+		createdAt = in.readString();
+		id = in.readInt();
+		picture = in.readString();
+	}
+
+	public static final Creator<Car> CREATOR = new Creator<Car>() {
+		@Override
+		public Car createFromParcel(Parcel in) {
+			return new Car(in);
+		}
+
+		@Override
+		public Car[] newArray(int size) {
+			return new Car[size];
+		}
+	};
 
 	public void setStoreId(int storeId){
 		this.storeId = storeId;
@@ -118,4 +144,21 @@ public class Car{
 			",picture = '" + picture + '\'' + 
 			"}";
 		}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(storeId);
+		dest.writeString(updatedAt);
+		dest.writeString(name);
+		dest.writeInt(rentalPrice);
+		dest.writeString(description);
+		dest.writeString(createdAt);
+		dest.writeInt(id);
+		dest.writeString(picture);
+	}
 }

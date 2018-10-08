@@ -21,7 +21,7 @@ import id.uripyogantara.rentcar.model.Car;
 import id.uripyogantara.rentcar.user.detailcar.DetailCarActivity;
 
 public class CarFragment extends Fragment implements CarAdapter.OnClickListener, CarView {
-
+    List<Car> cars;
     private RecyclerView rvCar;
     private CarAdapter adapter;
     private CarPresenter presenter;
@@ -54,7 +54,13 @@ public class CarFragment extends Fragment implements CarAdapter.OnClickListener,
 
     @Override
     public void onClick(int position) {
-        startActivity(new Intent(getContext(),DetailCarActivity.class));
+        Car car=cars.get(position);
+        Bundle bundle=new Bundle();
+        bundle.putParcelable(DetailCarActivity.KEY_CAR,car);
+        bundle.putParcelable(DetailCarActivity.KEY_STORE,car.getStore());
+        Intent intent=new Intent(getContext(),DetailCarActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     @Override
@@ -69,6 +75,7 @@ public class CarFragment extends Fragment implements CarAdapter.OnClickListener,
 
     @Override
     public void onSuccess(List<Car> cars) {
+        this.cars=cars;
         adapter=new CarAdapter(getContext(),cars);
         adapter.setOnClickListener(this);
         rvCar.setLayoutManager(new LinearLayoutManager(getContext()));

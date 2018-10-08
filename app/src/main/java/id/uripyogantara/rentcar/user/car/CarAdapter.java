@@ -68,8 +68,9 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
         }
 
         public void bind(Car car){
+            String rentalPrice=CurrencyFormater.toRupiah(car.getRentalPrice())+" /hari";
             tvName.setText(car.getName());
-            tvRentalPrice.setText(CurrencyFormater.toRupiah(car.getRentalPrice()));
+            tvRentalPrice.setText(rentalPrice);
             Glide.with(context).load(Constant.URL.carImage(car.getPicture())).into(imgCar);
         }
     }

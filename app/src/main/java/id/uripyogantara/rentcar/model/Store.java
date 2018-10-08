@@ -1,8 +1,11 @@
 package id.uripyogantara.rentcar.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Store{
+public class Store implements Parcelable {
 
 	@SerializedName("address")
 	private String address;
@@ -27,6 +30,29 @@ public class Store{
 
 	@SerializedName("lat")
 	private double lat;
+
+	protected Store(Parcel in) {
+		address = in.readString();
+		lng = in.readDouble();
+		updatedAt = in.readString();
+		userId = in.readInt();
+		name = in.readString();
+		createdAt = in.readString();
+		id = in.readInt();
+		lat = in.readDouble();
+	}
+
+	public static final Creator<Store> CREATOR = new Creator<Store>() {
+		@Override
+		public Store createFromParcel(Parcel in) {
+			return new Store(in);
+		}
+
+		@Override
+		public Store[] newArray(int size) {
+			return new Store[size];
+		}
+	};
 
 	public void setAddress(String address){
 		this.address = address;
@@ -106,4 +132,21 @@ public class Store{
 			",lat = '" + lat + '\'' + 
 			"}";
 		}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(address);
+		dest.writeDouble(lng);
+		dest.writeString(updatedAt);
+		dest.writeInt(userId);
+		dest.writeString(name);
+		dest.writeString(createdAt);
+		dest.writeInt(id);
+		dest.writeDouble(lat);
+	}
 }

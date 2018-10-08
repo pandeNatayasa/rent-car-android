@@ -25,8 +25,9 @@
             app:titleEnabled="false"
             >
             <ImageView
+                android:tint="#4c000000"
                 app:layout_collapseMode="parallax"
-                android:id="@+id/toolbarImage"
+                android:id="@+id/img_car"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -44,58 +45,82 @@
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
-
-    <LinearLayout
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_marginTop="10dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Toko"
-            style="@style/RentLabel"/>
-        <TextView
-            android:id="@+id/tv_toko_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Urip Rent Car"
-            android:layout_marginStart="10dp"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorDivider"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/harga"
-            style="@style/RentLabel"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Rp. 300.000/hari"
-            android:layout_marginStart="10dp"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorDivider"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mesin"
-            style="@style/RentLabel"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Matic"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"/>
-    </LinearLayout>
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rent Car"
+                style="@style/RentLabel"/>
+            <TextView
+                android:id="@+id/tv_store_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Urip Rent Car"
+                android:layout_marginStart="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama Mobil"
+                style="@style/RentLabel"/>
+            <TextView
+                android:id="@+id/tv_car_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Urip Rent Car"
+                android:layout_marginStart="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/harga"
+                style="@style/RentLabel"/>
+            <TextView
+                android:id="@+id/tv_car_rental_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rp. 300.000/hari"
+                android:layout_marginStart="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi"
+                style="@style/RentLabel"/>
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
