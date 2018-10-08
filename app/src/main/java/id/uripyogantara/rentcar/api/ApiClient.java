@@ -13,13 +13,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private Context context;
 
-    public ApiClient(Context context) {
-        this.context = context;
-    }
-
-    public ApiService getService(){
+    public static ApiService getService(Context context){
         final PreferencesHelper preferencesHelper = new PreferencesHelper(context);
 
         OkHttpClient client=new OkHttpClient.Builder()

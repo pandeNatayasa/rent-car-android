@@ -3,12 +3,15 @@ package id.uripyogantara.rentcar.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import id.uripyogantara.rentcar.model.User;
+
 public class PreferencesHelper {
     private SharedPreferences sharedPreferences;
     private final String PREFERENCES_NAME="shared_preferences";
     private final String LOGIN="login";
     private final String TOKEN="token";
-    private final String MEDICAL_CENTER="medical_center";
+    private final String NAME="name";
+    private final String USER_TYPE="user_type";
 
     public PreferencesHelper(Context context) {
         sharedPreferences=context.getSharedPreferences(PREFERENCES_NAME,Context.MODE_PRIVATE);
@@ -30,11 +33,36 @@ public class PreferencesHelper {
         return sharedPreferences.getString(TOKEN,"");
     }
 
-    public void setMedicalCenter(int medicalCenter){
-        sharedPreferences.edit().putInt(MEDICAL_CENTER,medicalCenter).apply();
+    public void setName(String name){
+        sharedPreferences.edit()
+                .putString(NAME,name)
+                .apply();
     }
 
-    public int getMedicalCenter(){
-        return sharedPreferences.getInt(MEDICAL_CENTER,0);
+    public String getName(){
+        return sharedPreferences.getString(NAME,"");
+    }
+
+    public void setUserType(String userType){
+        sharedPreferences.edit()
+                .putString(USER_TYPE,userType)
+                .apply();
+    }
+
+    public String getUserType(){
+        return sharedPreferences.getString(USER_TYPE,"");
+    }
+
+    public void setUserLogin(User user){
+        setLogin(true);
+        setToken(user.getToken());
+        setName(user.getName());
+        setUserType(String.valueOf(user.getUserType()));
+    }
+
+    public void logout(){
+        sharedPreferences.edit()
+                .clear()
+                .apply();
     }
 }
