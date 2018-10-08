@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import id.uripyogantara.rentcar.login.LoginActivity;
+import id.uripyogantara.rentcar.auth.login.LoginActivity;
 import id.uripyogantara.rentcar.user.UserActivity;
 import id.uripyogantara.rentcar.utils.PreferencesHelper;
 

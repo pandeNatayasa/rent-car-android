@@ -13,8 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import id.uripyogantara.rentcar.R;
-import id.uripyogantara.rentcar.login.LoginActivity;
-import id.uripyogantara.rentcar.login.LoginPresenter;
+import id.uripyogantara.rentcar.auth.login.LoginActivity;
 import id.uripyogantara.rentcar.utils.PreferencesHelper;
 
 public class ProfilFragment extends Fragment {

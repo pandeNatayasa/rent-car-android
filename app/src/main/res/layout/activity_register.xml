@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginActivity">
+    tools:context=".auth.login.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,29 +22,55 @@
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"/>
         <EditText
+            android:id="@+id/et_nama"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nama"/>
         <EditText
+            android:id="@+id/et_email"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"/>
         <EditText
+            android:id="@+id/et_telepon"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Telepon"/>
         <EditText
+            android:id="@+id/et_username"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"/>
         <EditText
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jenis User"/>
+        <RadioGroup
+            android:id="@+id/rg_user_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rb_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Penyewa"/>
+            <RadioButton
+                android:id="@+id/rb_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rent Car"/>
+        </RadioGroup>
         <Button
             android:id="@+id/btn_register"
             android:layout_marginTop="10dp"

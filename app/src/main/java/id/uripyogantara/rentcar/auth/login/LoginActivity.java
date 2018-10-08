@@ -1,4 +1,4 @@
-package id.uripyogantara.rentcar.login;
+package id.uripyogantara.rentcar.auth.login;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,21 +10,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import id.uripyogantara.rentcar.R;
-import id.uripyogantara.rentcar.RegisterActivity;
+import id.uripyogantara.rentcar.auth.AuthPresenter;
+import id.uripyogantara.rentcar.auth.AuthView;
+import id.uripyogantara.rentcar.auth.register.RegisterActivity;
 import id.uripyogantara.rentcar.api.ApiClient;
 import id.uripyogantara.rentcar.model.User;
 import id.uripyogantara.rentcar.user.UserActivity;
 import id.uripyogantara.rentcar.utils.PreferencesHelper;
-import retrofit2.Call;
 
-public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements AuthView, View.OnClickListener {
     protected Button btnLogin;
     protected TextView tvRegister;
     protected EditText etUsername,etPassword;
 
     private PreferencesHelper preferencesHelper;
 
-    private LoginPresenter presenter;
+    private AuthPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         btnLogin.setOnClickListener(this);
         tvRegister.setOnClickListener(this);
 
-        presenter=new LoginPresenter(this,ApiClient.getService(this));
+        presenter=new AuthPresenter(this,ApiClient.getService(this));
 
         preferencesHelper=new PreferencesHelper(this);
     }

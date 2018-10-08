@@ -13,14 +13,18 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import id.uripyogantara.rentcar.R;
+import id.uripyogantara.rentcar.api.ApiClient;
+import id.uripyogantara.rentcar.model.Car;
 import id.uripyogantara.rentcar.user.detailcar.DetailCarActivity;
 
-public class CarFragment extends Fragment implements CarAdapter.OnClickListener {
+public class CarFragment extends Fragment implements CarAdapter.OnClickListener, CarView {
 
-    RecyclerView rvCar;
-    CarAdapter adapter;
-
+    private RecyclerView rvCar;
+    private CarAdapter adapter;
+    private CarPresenter presenter;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +42,9 @@ public class CarFragment extends Fragment implements CarAdapter.OnClickListener 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        rvCar.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter=new CarAdapter(getContext());
-        adapter.setOnClickListener(this);
-        rvCar.setAdapter(adapter);
+
+        presenter=new CarPresenter(this,ApiClient.getService(getContext()));
+        presenter.getCars();
     }
 
     @Override
@@ -52,5 +55,33 @@ public class CarFragment extends Fragment implements CarAdapter.OnClickListener 
     @Override
     public void onClick(int position) {
         startActivity(new Intent(getContext(),DetailCarActivity.class));
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void onSuccess(List<Car> cars) {
+        adapter=new CarAdapter(getContext(),cars);
+        adapter.setOnClickListener(this);
+        rvCar.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvCar.setAdapter(adapter);
+    }
+
+    @Override
+    public void onError() {
+
+    }
+
+    @Override
+    public void onFailure(Throwable t) {
+
     }
 }

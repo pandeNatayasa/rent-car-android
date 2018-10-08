@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="5dp"
     app:cardCornerRadius="10dp"
     app:cardPreventCornerOverlap="false">
@@ -10,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/img_car"
             android:tint="#32000000"
             android:src="@drawable/car"
             android:layout_width="match_parent"
@@ -17,20 +19,22 @@
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"/>
         <TextView
+            android:id="@+id/tv_car_name"
             android:fontFamily="@font/poetsen_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:text="Lamborgini"
+            tools:text="Lamborgini"
             android:textColor="@android:color/white"
             android:padding="10dp"
             android:textSize="22sp"
             android:textStyle="bold"/>
         <TextView
+            android:id="@+id/tv_car_rental_price"
             android:fontFamily="@font/poetsen_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rp. 200.000/hari"
+            tools:text="Rp. 200.000/hari"
             android:layout_gravity="bottom|end"
             android:padding="5dp"
             android:textSize="12sp"
