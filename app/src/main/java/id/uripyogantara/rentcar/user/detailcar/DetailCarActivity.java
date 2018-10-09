@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -19,19 +18,17 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import java.text.DateFormat;
-
 import id.uripyogantara.rentcar.R;
 import id.uripyogantara.rentcar.api.ApiClient;
 import id.uripyogantara.rentcar.model.Car;
 import id.uripyogantara.rentcar.model.Response;
 import id.uripyogantara.rentcar.model.Store;
-import id.uripyogantara.rentcar.user.toko.TokoActivity;
+import id.uripyogantara.rentcar.user.store.StoreActivity;
 import id.uripyogantara.rentcar.utils.Constant;
 import id.uripyogantara.rentcar.utils.CurrencyFormater;
 import id.uripyogantara.rentcar.utils.DateFormater;
 
-public class DetailCarActivity extends AppCompatActivity implements View.OnClickListener, TransactionView {
+public class DetailCarActivity extends AppCompatActivity implements View.OnClickListener, DetailCarView {
     public static final String KEY_CAR="car";
     public static final String KEY_STORE="store";
 
@@ -46,7 +43,7 @@ public class DetailCarActivity extends AppCompatActivity implements View.OnClick
 
     String dateStart,dateEnd,timeStart,timeEnd;
 
-    TransactionPresenter presenter;
+    DetailCarPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +64,7 @@ public class DetailCarActivity extends AppCompatActivity implements View.OnClick
         car=getIntent().getParcelableExtra(KEY_CAR);
         store=getIntent().getParcelableExtra(KEY_STORE);
 
-        presenter=new TransactionPresenter(ApiClient.getService(this),this);
+        presenter=new DetailCarPresenter(ApiClient.getService(this),this);
 
         imgCar=findViewById(R.id.img_car);
         btnRent=findViewById(R.id.btn_rent);
@@ -80,7 +77,7 @@ public class DetailCarActivity extends AppCompatActivity implements View.OnClick
         tvStoreName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),TokoActivity.class));
+                startActivity(new Intent(getApplicationContext(),StoreActivity.class));
             }
         });
 

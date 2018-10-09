@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".ResultActivity" />
         <activity android:name=".user.detailcar.DetailCarActivity" />
-        <activity android:name=".user.toko.TokoActivity"></activity>
+        <activity android:name=".user.store.StoreActivity"></activity>
     </application>
 
 </manifest>

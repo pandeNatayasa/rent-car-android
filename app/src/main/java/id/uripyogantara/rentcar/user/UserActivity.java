@@ -1,23 +1,19 @@
 package id.uripyogantara.rentcar.user;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import id.uripyogantara.rentcar.R;
-import id.uripyogantara.rentcar.ResultActivity;
 import id.uripyogantara.rentcar.user.car.CarFragment;
 import id.uripyogantara.rentcar.user.profil.ProfilFragment;
-import id.uripyogantara.rentcar.user.rent.RentFragment;
+import id.uripyogantara.rentcar.user.transaction.TransactionFragment;
 
 public class UserActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     BottomNavigationViewEx bnve;
@@ -51,7 +47,7 @@ public class UserActivity extends AppCompatActivity implements BottomNavigationV
                 setFragment(new CarFragment());
                 break;
             case R.id.menu_car:
-                setFragment(new RentFragment());
+                setFragment(new TransactionFragment());
                 break;
             case R.id.menu_profil:
                 setFragment(new ProfilFragment());

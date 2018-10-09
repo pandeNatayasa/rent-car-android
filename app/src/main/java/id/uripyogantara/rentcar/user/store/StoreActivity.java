@@ -1,4 +1,4 @@
-package id.uripyogantara.rentcar.user.toko;
+package id.uripyogantara.rentcar.user.store;
 
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -12,7 +12,7 @@ import android.os.Bundle;
 import id.uripyogantara.rentcar.R;
 import id.uripyogantara.rentcar.user.profil.ProfilFragment;
 
-public class TokoActivity extends AppCompatActivity {
+public class StoreActivity extends AppCompatActivity {
     PagerAdapter pagerAdapter;
     ViewPager viewPager;
     TabLayout tabLayout;

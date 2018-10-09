@@ -1,6 +1,5 @@
-package id.uripyogantara.rentcar.user.rent;
+package id.uripyogantara.rentcar.user.transaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,21 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import id.uripyogantara.rentcar.R;
-import id.uripyogantara.rentcar.user.car.CarFragment;
-import id.uripyogantara.rentcar.user.detailcar.DetailCarActivity;
-import id.uripyogantara.rentcar.user.profil.ProfilFragment;
-import id.uripyogantara.rentcar.user.rent.going.RentGoingFragment;
+import id.uripyogantara.rentcar.user.transaction.going.OnGoingTransactionFragment;
 
-public class RentFragment extends Fragment{
+public class TransactionFragment extends Fragment{
 
     PagerAdapter adapter;
 
@@ -61,7 +53,7 @@ public class RentFragment extends Fragment{
 
         @Override
         public Fragment getItem(int i) {
-            return new RentGoingFragment();
+            return new OnGoingTransactionFragment();
         }
 
         @Override
