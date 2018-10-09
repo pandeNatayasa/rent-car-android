@@ -3,6 +3,7 @@ package id.uripyogantara.rentcar.api;
 import java.util.List;
 
 import id.uripyogantara.rentcar.model.Car;
+import id.uripyogantara.rentcar.model.Response;
 import id.uripyogantara.rentcar.model.User;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -24,6 +25,13 @@ public interface ApiService {
             @Field("phone")     String phone,
             @Field("password")  String password,
             @Field("user_type") int userType);
+
+    @FormUrlEncoded
+    @POST("transaction")
+    Call<Response> storeTransaction(
+            @Field("car_id")        int carId,
+            @Field("start_date")    String dateStart,
+            @Field("end_date")      String dateEnd);
 
     @GET("car")
     Call<List<Car>> allCar();
