@@ -9,13 +9,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import id.uripyogantara.rentcar.R;
 import id.uripyogantara.rentcar.model.Store;
 import id.uripyogantara.rentcar.user.detailcar.DetailCarActivity;
 
-public class StoreOverviewFragment extends Fragment {
+public class StoreOverviewFragment extends Fragment implements OnMapReadyCallback {
     TextView tvStoreName,tvStoreOwner,tvStorePhone,tvStoreEmail,tvStoreAddress;
     Store store;
+
+    private GoogleMap mGoogleMap;
+    MapView mapView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +44,15 @@ public class StoreOverviewFragment extends Fragment {
         tvStoreOwner=view.findViewById(R.id.tv_store_owner);
         tvStorePhone=view.findViewById(R.id.tv_store_phone);
         tvStoreEmail=view.findViewById(R.id.tv_store_email);
+        mapView=view.findViewById(R.id.map);
+        mapView.onCreate(savedInstanceState);
+        mapView.onResume();
+        try {
+            MapsInitializer.initialize(getActivity().getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return view;
     }
 
@@ -44,5 +64,16 @@ public class StoreOverviewFragment extends Fragment {
 //        tvStoreOwner.setText();
 //        tvStorePhone=view.findViewById(R.id.tv_store_phone);
 //        tvStoreEmail=view.findViewById(R.id.tv_store_email);
+        mapView.getMapAsync(this);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mGoogleMap=googleMap;
+        if (mGoogleMap!=null){
+            LatLng latLng = new LatLng(store.getLat(), store.getLng());
+            mGoogleMap.addMarker(new MarkerOptions().position(latLng).title(store.getName()));
+            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,16));
+        }
     }
 }
