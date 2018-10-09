@@ -27,7 +27,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
         this.cars=cars;
     }
 
-    protected interface OnClickListener{
+    public interface OnClickListener{
         void onClick(int position);
     }
 

@@ -10,16 +10,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import id.uripyogantara.rentcar.R;
+import id.uripyogantara.rentcar.model.Store;
+import id.uripyogantara.rentcar.user.detailcar.DetailCarActivity;
 import id.uripyogantara.rentcar.user.profil.ProfilFragment;
+import id.uripyogantara.rentcar.user.store.car.StoreCarFragment;
+import id.uripyogantara.rentcar.user.store.overview.StoreOverviewFragment;
+
+import static id.uripyogantara.rentcar.user.detailcar.DetailCarActivity.KEY_STORE;
 
 public class StoreActivity extends AppCompatActivity {
     PagerAdapter pagerAdapter;
     ViewPager viewPager;
     TabLayout tabLayout;
+    Store store;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toko);
+
+        store=getIntent().getParcelableExtra(KEY_STORE);
+
         viewPager=findViewById(R.id.view_pager_toko);
         tabLayout=findViewById(R.id.tab_toko);
         pagerAdapter=new PagerAdapter(getSupportFragmentManager());
@@ -35,7 +45,16 @@ public class StoreActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int i) {
-            return new ProfilFragment();
+            Fragment fragment;
+            if (i==0){
+                fragment=new StoreOverviewFragment();
+            }else {
+                fragment=new StoreCarFragment();
+            }
+            Bundle bundle=new Bundle();
+            bundle.putParcelable(KEY_STORE,store);
+            fragment.setArguments(bundle);
+            return fragment;
         }
 
         @Override

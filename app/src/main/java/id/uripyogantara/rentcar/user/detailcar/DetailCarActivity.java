@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -77,7 +78,11 @@ public class DetailCarActivity extends AppCompatActivity implements View.OnClick
         tvStoreName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),StoreActivity.class));
+                Intent intent=new Intent(getApplicationContext(),StoreActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putParcelable(KEY_STORE,store);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 
