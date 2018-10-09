@@ -1,30 +1,31 @@
-package id.uripyogantara.rentcar.user.store.car;
+package id.uripyogantara.rentcar.user.store;
 
 import java.util.List;
 
 import id.uripyogantara.rentcar.api.ApiService;
 import id.uripyogantara.rentcar.model.Car;
+import id.uripyogantara.rentcar.model.Store;
 import id.uripyogantara.rentcar.user.car.CarView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StoreCarPresenter {
-    private CarView view;
+public class StorePresenter {
+    private StoreView view;
     private ApiService service;
 
-    public StoreCarPresenter(CarView view, ApiService service) {
+    public StorePresenter(StoreView view, ApiService service) {
         this.view = view;
         this.service = service;
     }
 
-    public void getStoreCars(int storeId){
+    public void getStores(){
         view.showLoading();
 
-        service.showCarByStore(storeId)
-                .enqueue(new Callback<List<Car>>() {
+        service.getAllStore()
+                .enqueue(new Callback<List<Store>>() {
                     @Override
-                    public void onResponse(Call<List<Car>> call, Response<List<Car>> response) {
+                    public void onResponse(Call<List<Store>> call, Response<List<Store>> response) {
                         if (response.isSuccessful()){
                             view.onSuccess(response.body());
                         }else {
@@ -34,8 +35,9 @@ public class StoreCarPresenter {
                     }
 
                     @Override
-                    public void onFailure(Call<List<Car>> call, Throwable t) {
+                    public void onFailure(Call<List<Store>> call, Throwable t) {
                         view.onFailure(t);
+                        view.hideLoading();
                     }
                 });
     }

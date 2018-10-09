@@ -4,6 +4,7 @@ import java.util.List;
 
 import id.uripyogantara.rentcar.model.Car;
 import id.uripyogantara.rentcar.model.Response;
+import id.uripyogantara.rentcar.model.Store;
 import id.uripyogantara.rentcar.model.Transaction;
 import id.uripyogantara.rentcar.model.User;
 import retrofit2.Call;
@@ -43,4 +44,7 @@ public interface ApiService {
 
     @GET("store/{id}/car")
     Call<List<Car>> showCarByStore(@Path("id") int storeId);
+
+    @GET("store")
+    Call<List<Store>> getAllStore();
 }

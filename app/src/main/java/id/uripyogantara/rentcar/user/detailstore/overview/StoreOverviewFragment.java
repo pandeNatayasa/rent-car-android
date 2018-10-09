@@ -1,4 +1,4 @@
-package id.uripyogantara.rentcar.user.store.overview;
+package id.uripyogantara.rentcar.user.detailstore.overview;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -61,9 +61,6 @@ public class StoreOverviewFragment extends Fragment implements OnMapReadyCallbac
         super.onActivityCreated(savedInstanceState);
         tvStoreAddress.setText(store.getAddress());
         tvStoreName.setText(store.getName());
-//        tvStoreOwner.setText();
-//        tvStorePhone=view.findViewById(R.id.tv_store_phone);
-//        tvStoreEmail=view.findViewById(R.id.tv_store_email);
         mapView.getMapAsync(this);
     }
 

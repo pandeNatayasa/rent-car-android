@@ -1,4 +1,4 @@
-package id.uripyogantara.rentcar.user.store;
+package id.uripyogantara.rentcar.user.detailstore;
 
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -11,10 +11,8 @@ import android.os.Bundle;
 
 import id.uripyogantara.rentcar.R;
 import id.uripyogantara.rentcar.model.Store;
-import id.uripyogantara.rentcar.user.detailcar.DetailCarActivity;
-import id.uripyogantara.rentcar.user.profil.ProfilFragment;
-import id.uripyogantara.rentcar.user.store.car.StoreCarFragment;
-import id.uripyogantara.rentcar.user.store.overview.StoreOverviewFragment;
+import id.uripyogantara.rentcar.user.detailstore.car.StoreCarFragment;
+import id.uripyogantara.rentcar.user.detailstore.overview.StoreOverviewFragment;
 
 import static id.uripyogantara.rentcar.user.detailcar.DetailCarActivity.KEY_STORE;
 

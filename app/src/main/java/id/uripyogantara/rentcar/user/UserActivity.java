@@ -13,6 +13,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import id.uripyogantara.rentcar.R;
 import id.uripyogantara.rentcar.user.car.CarFragment;
 import id.uripyogantara.rentcar.user.profil.ProfilFragment;
+import id.uripyogantara.rentcar.user.store.StoreFragment;
 import id.uripyogantara.rentcar.user.transaction.TransactionFragment;
 
 public class UserActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -45,6 +46,9 @@ public class UserActivity extends AppCompatActivity implements BottomNavigationV
         switch (menuItem.getItemId()){
             case R.id.menu_home:
                 setFragment(new CarFragment());
+                break;
+            case R.id.menu_store:
+                setFragment(new StoreFragment());
                 break;
             case R.id.menu_car:
                 setFragment(new TransactionFragment());

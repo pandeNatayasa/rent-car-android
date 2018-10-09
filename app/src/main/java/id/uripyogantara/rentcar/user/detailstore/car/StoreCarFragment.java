@@ -1,4 +1,4 @@
-package id.uripyogantara.rentcar.user.store.car;
+package id.uripyogantara.rentcar.user.detailstore.car;
 
 import android.content.Intent;
 import android.os.Bundle;
