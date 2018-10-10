@@ -58,4 +58,29 @@ public class AuthPresenter {
                     }
                 });
     }
+
+    public void registerStore(String name,String username,String email,String phone,String password,int userType,String storeName,
+                              String storeAddress,
+                              double lat,
+                              double lng){
+        view.showLoading();
+        service.registerStore(name, username, email, phone, password, userType,storeName,storeAddress,lat,lng)
+                .enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if (response.isSuccessful()){
+                            view.onSuccess(response.body());
+                        }else{
+                            view.onError();
+                        }
+                        view.hideLoading();
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        view.onFailure(t);
+                        view.hideLoading();
+                    }
+                });
+    }
 }

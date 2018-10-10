@@ -30,6 +30,21 @@ public interface ApiService {
             @Field("user_type") int userType);
 
     @FormUrlEncoded
+    @POST("register")
+    Call<User> registerStore(
+            @Field("name")      String name,
+            @Field("username")  String username,
+            @Field("email")     String email,
+            @Field("phone")     String phone,
+            @Field("password")  String password,
+            @Field("user_type") int userType,
+            @Field("store_name")  String storeName,
+            @Field("store_address")  String storeAddress,
+            @Field("lat")  double lat,
+            @Field("lng")  double lng
+    );
+
+    @FormUrlEncoded
     @POST("transaction")
     Call<Response> storeTransaction(
             @Field("car_id")        int carId,
