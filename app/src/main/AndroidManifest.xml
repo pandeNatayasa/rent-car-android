@@ -9,6 +9,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -19,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".user.UserActivity" />
-        <activity android:name=".admin.AdminActivity"/>
+        <activity android:name=".admin.AdminActivity" />
         <activity android:name=".auth.login.LoginActivity" />
         <activity android:name=".auth.register.RegisterActivity" />
         <activity android:name=".SplashScreenActivity">
@@ -43,6 +44,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity android:name=".admin.addcar.AddCarActivity"></activity>
     </application>
 
 </manifest>

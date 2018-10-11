@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import id.uripyogantara.rentcar.R;
+import id.uripyogantara.rentcar.admin.addcar.AddCarActivity;
 import id.uripyogantara.rentcar.api.ApiClient;
 import id.uripyogantara.rentcar.model.Car;
 import id.uripyogantara.rentcar.user.detailcar.DetailCarActivity;
@@ -26,6 +28,8 @@ public class AdminCarFragment extends Fragment implements AdminCarAdapter.OnClic
     private RecyclerView rvCar;
     private AdminCarAdapter adapter;
     private AdminCarPresenter presenter;
+
+    FloatingActionButton fab;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +41,7 @@ public class AdminCarFragment extends Fragment implements AdminCarAdapter.OnClic
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        View view=inflater.inflate(R.layout.fragment_admin_car,container,false);
        rvCar=view.findViewById(R.id.rv_car);
+       fab=view.findViewById(R.id.fab_add_car);
        return view;
     }
 
@@ -46,6 +51,12 @@ public class AdminCarFragment extends Fragment implements AdminCarAdapter.OnClic
 
         presenter=new AdminCarPresenter(this,ApiClient.getService(getContext()));
         presenter.getCars();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(),AddCarActivity.class));
+            }
+        });
     }
 
     @Override

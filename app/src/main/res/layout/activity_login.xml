@@ -31,6 +31,7 @@
             android:background="@drawable/et_semi_round"
             android:padding="10dp"/>
         <EditText
+            android:inputType="textPassword"
             android:id="@+id/et_password"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
