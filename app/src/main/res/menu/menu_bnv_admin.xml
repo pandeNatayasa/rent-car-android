@@ -4,12 +4,9 @@
         android:id="@+id/menu_home"
         android:title="Home"
         android:icon="@drawable/ic_home"/>
-    <item android:id="@+id/menu_store"
-        android:title="Toko"
-        android:icon="@drawable/ic_car"/>
     <item android:id="@+id/menu_car"
-        android:title="Rent"
-        android:icon="@drawable/ic_shopping_cart"/>
+        android:title="Car"
+        android:icon="@drawable/ic_car"/>
     <item
         android:id="@+id/menu_profil"
         android:title="Profil"

@@ -5,8 +5,10 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import id.uripyogantara.rentcar.admin.AdminActivity;
 import id.uripyogantara.rentcar.auth.login.LoginActivity;
 import id.uripyogantara.rentcar.user.UserActivity;
+import id.uripyogantara.rentcar.utils.Constant;
 import id.uripyogantara.rentcar.utils.PreferencesHelper;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -24,7 +26,11 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 Intent intent;
                 if (preferencesHelper.getLogin()){
-                    intent=new Intent(SplashScreenActivity.this,UserActivity.class);
+                    if (preferencesHelper.getUserType()==Constant.UserType.USER){
+                        intent=new Intent(SplashScreenActivity.this,UserActivity.class);
+                    }else {
+                        intent=new Intent(SplashScreenActivity.this,AdminActivity.class);
+                    }
                 }else {
                     intent=new Intent(SplashScreenActivity.this,LoginActivity.class);
                 }

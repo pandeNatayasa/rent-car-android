@@ -10,12 +10,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import id.uripyogantara.rentcar.R;
+import id.uripyogantara.rentcar.admin.AdminActivity;
 import id.uripyogantara.rentcar.auth.AuthPresenter;
 import id.uripyogantara.rentcar.auth.AuthView;
 import id.uripyogantara.rentcar.auth.register.RegisterActivity;
 import id.uripyogantara.rentcar.api.ApiClient;
 import id.uripyogantara.rentcar.model.User;
 import id.uripyogantara.rentcar.user.UserActivity;
+import id.uripyogantara.rentcar.utils.Constant;
 import id.uripyogantara.rentcar.utils.PreferencesHelper;
 
 public class LoginActivity extends AppCompatActivity implements AuthView, View.OnClickListener {
@@ -61,7 +63,11 @@ public class LoginActivity extends AppCompatActivity implements AuthView, View.O
     @Override
     public void onSuccess(User user) {
         preferencesHelper.setUserLogin(user);
-        startActivity(new Intent(LoginActivity.this,UserActivity.class));
+        if (user.getUserType()==Constant.UserType.USER){
+            startActivity(new Intent(LoginActivity.this,UserActivity.class));
+        }else {
+            startActivity(new Intent(LoginActivity.this,AdminActivity.class));
+        }
         finish();
         Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show();
     }

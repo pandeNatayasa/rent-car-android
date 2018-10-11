@@ -43,21 +43,21 @@ public class PreferencesHelper {
         return sharedPreferences.getString(NAME,"");
     }
 
-    public void setUserType(String userType){
+    public void setUserType(int userType){
         sharedPreferences.edit()
-                .putString(USER_TYPE,userType)
+                .putInt(USER_TYPE,userType)
                 .apply();
     }
 
-    public String getUserType(){
-        return sharedPreferences.getString(USER_TYPE,"");
+    public int getUserType(){
+        return sharedPreferences.getInt(USER_TYPE,0);
     }
 
     public void setUserLogin(User user){
         setLogin(true);
         setToken(user.getToken());
         setName(user.getName());
-        setUserType(String.valueOf(user.getUserType()));
+        setUserType(user.getUserType());
     }
 
     public void logout(){

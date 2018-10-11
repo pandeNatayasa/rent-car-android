@@ -54,8 +54,14 @@ public interface ApiService {
     @GET("car")
     Call<List<Car>> allCar();
 
+    @GET("car/store")
+    Call<List<Car>> storeCar();
+
     @GET("transaction")
     Call<List<Transaction>> getAllTransaction();
+
+    @GET("transaction/store")
+    Call<List<Transaction>> getStoreTransaction();
 
     @GET("store/{id}/car")
     Call<List<Car>> showCarByStore(@Path("id") int storeId);

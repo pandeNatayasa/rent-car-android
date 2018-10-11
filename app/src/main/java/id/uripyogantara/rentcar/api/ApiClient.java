@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.io.IOException;
 
+import id.uripyogantara.rentcar.utils.Constant;
 import id.uripyogantara.rentcar.utils.PreferencesHelper;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -41,7 +42,7 @@ public class ApiClient {
             }).build();
 
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://192.168.43.69:8000/api/")
+                .baseUrl(Constant.URL.api())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

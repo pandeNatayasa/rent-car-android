@@ -11,5 +11,10 @@ public class Constant {
         public static String carImage(String file){
             return BASE_URL+"images/car/"+file;
         }
+        public static String api(){
+            return BASE_URL+"api/";
+        }
     }
+
+
 }

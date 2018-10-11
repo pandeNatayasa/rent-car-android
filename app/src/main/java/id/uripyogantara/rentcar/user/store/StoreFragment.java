@@ -1,5 +1,6 @@
 package id.uripyogantara.rentcar.user.store;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,8 +18,11 @@ import java.util.List;
 import id.uripyogantara.rentcar.R;
 import id.uripyogantara.rentcar.api.ApiClient;
 import id.uripyogantara.rentcar.model.Store;
+import id.uripyogantara.rentcar.user.detailstore.StoreActivity;
 
-public class StoreFragment extends Fragment implements StoreView {
+import static id.uripyogantara.rentcar.user.detailcar.DetailCarActivity.KEY_STORE;
+
+public class StoreFragment extends Fragment implements StoreView, StoreAdapter.OnClickListener {
     List<Store> stores;
     private RecyclerView rvStore;
     private StoreAdapter adapter;
@@ -59,7 +63,7 @@ public class StoreFragment extends Fragment implements StoreView {
     public void onSuccess(List<Store> stores) {
         this.stores= stores;
         adapter=new StoreAdapter(getContext(),stores);
-//        adapter.setOnClickListener(this);
+        adapter.setOnClickListener(this);
         rvStore.setLayoutManager(new LinearLayoutManager(getContext()));
         rvStore.setAdapter(adapter);
     }
@@ -72,5 +76,15 @@ public class StoreFragment extends Fragment implements StoreView {
     @Override
     public void onFailure(Throwable t) {
 
+    }
+
+    @Override
+    public void onClick(int position) {
+        Store store=stores.get(position);
+        Intent intent=new Intent(getContext(),StoreActivity.class);
+        Bundle bundle=new Bundle();
+        bundle.putParcelable(KEY_STORE,store);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

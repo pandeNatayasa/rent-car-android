@@ -1,4 +1,4 @@
-package id.uripyogantara.rentcar.user.store;
+package id.uripyogantara.rentcar.admin.car;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,19 +9,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import id.uripyogantara.rentcar.R;
-import id.uripyogantara.rentcar.model.Store;
+import id.uripyogantara.rentcar.model.Car;
+import id.uripyogantara.rentcar.utils.Constant;
+import id.uripyogantara.rentcar.utils.CurrencyFormater;
 
-public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder>{
+public class AdminCarAdapter extends RecyclerView.Adapter<AdminCarAdapter.ViewHolder> {
     private Context context;
-    private List<Store> stores;
     private OnClickListener onClickListener;
-
-    public StoreAdapter(Context context, List<Store> stores) {
+    private List<Car> cars;
+    public AdminCarAdapter(Context context, List<Car> cars) {
         this.context = context;
-        this.stores = stores;
+        this.cars=cars;
     }
 
     public interface OnClickListener{
@@ -31,27 +34,29 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder>{
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.list_store,viewGroup,false));
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.list_car,viewGroup,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.bind(stores.get(i));
+        Car car=cars.get(i);
+        viewHolder.bind(car);
     }
 
     @Override
     public int getItemCount() {
-        return stores.size();
+        return cars.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView imgStore;
-        TextView tvStoreName,tvStoreAddress;
+        ImageView imgCar;
+        TextView tvName, tvRentalPrice;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgStore=itemView.findViewById(R.id.img_store);
-            tvStoreName=itemView.findViewById(R.id.tv_store_name);
-            tvStoreAddress=itemView.findViewById(R.id.tv_store_address);
+            imgCar=itemView.findViewById(R.id.img_car);
+            tvName=itemView.findViewById(R.id.tv_car_name);
+            tvRentalPrice=itemView.findViewById(R.id.tv_car_rental_price);
             if (onClickListener!=null){
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -62,9 +67,11 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder>{
             }
         }
 
-        public void bind(Store store){
-            tvStoreAddress.setText(store.getAddress());
-            tvStoreName.setText(store.getName());
+        public void bind(Car car){
+            String rentalPrice=CurrencyFormater.toRupiah(car.getRentalPrice())+" /hari";
+            tvName.setText(car.getName());
+            tvRentalPrice.setText(rentalPrice);
+            Glide.with(context).load(Constant.URL.carImage(car.getPicture())).into(imgCar);
         }
     }
 
