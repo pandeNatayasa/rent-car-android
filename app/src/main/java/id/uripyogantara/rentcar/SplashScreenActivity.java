@@ -1,6 +1,8 @@
 package id.uripyogantara.rentcar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,5 +40,23 @@ public class SplashScreenActivity extends AppCompatActivity {
                 finish();
             }
         },200);
+    }
+
+    private void ter(){
+        final String SHARED_PREFERENCES_NAME="shared_preferences";
+        SharedPreferences sharedPref=getSharedPreferences(SHARED_PREFERENCES_NAME,Context.MODE_PRIVATE);
+
+        final String KEY_NAMA="nama";
+        final String KEY_UMUR="umur";
+
+        SharedPreferences.Editor editor=sharedPref.edit();
+
+        editor.putString(KEY_NAMA,"wayan");
+        editor.putInt(KEY_UMUR,20);
+        editor.apply();
+
+
+        String nama=sharedPref.getString(KEY_NAMA,"");
+        int umur=sharedPref.getInt(KEY_UMUR,0);
     }
 }

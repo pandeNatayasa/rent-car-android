@@ -33,6 +33,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import id.uripyogantara.rentcar.R;
+import id.uripyogantara.rentcar.admin.AdminActivity;
 import id.uripyogantara.rentcar.api.ApiClient;
 import id.uripyogantara.rentcar.api.ApiService;
 import id.uripyogantara.rentcar.auth.AuthPresenter;
@@ -157,7 +158,11 @@ public class RegisterActivity extends AppCompatActivity implements AuthView, OnM
     @Override
     public void onSuccess(User user) {
         preferencesHelper.setUserLogin(user);
-        startActivity(new Intent(this,UserActivity.class));
+        if (user.getUserType()==Constant.UserType.USER){
+            startActivity(new Intent(this,UserActivity.class));
+        }else {
+            startActivity(new Intent(this,AdminActivity.class));
+        }
         finish();
     }
 
